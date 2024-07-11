@@ -1,7 +1,7 @@
 **Name:** J.MEERAN ASHFAAQ
 **Company:** CODETECH IT SOLUTIONS
 **ID:** CT08DS3494
-**Domain:** Data Analytics
+**Domain:** Java programming
 **Duration:** July to August 2024
 
 Overview of the Project
