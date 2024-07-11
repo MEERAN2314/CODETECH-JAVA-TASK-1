@@ -1,0 +1,123 @@
+package com.gk.student;
+
+import java.util.Scanner;
+
+public class Grade_Tracker {
+	
+	    private static final int max_marks = 100; 
+	    private static final String[] subjects = new String[max_marks];
+	    private static final double[] grades = new double[max_marks];
+	    private static int markCount = 0;
+	    private static final Scanner s = new Scanner(System.in);
+
+
+	public static void main(String[] args) {
+		while(true) {
+		System.out.println("Menu:");
+        System.out.println("1. Add subject with mark");
+        System.out.println("2. Calculate average mark");
+        System.out.println("3. Display overall marks");
+        System.out.println("4. Exit");
+        System.out.print("Please choose an option from above(1-4): ");
+        
+        int choice = s.nextInt();
+        s.nextLine(); 
+
+        switch (choice) {
+            case 1:
+                addSubject();
+                break;
+            case 2:
+                calculateAverageMark();
+                break;
+            case 3:
+                displayOverallMarks();
+                break;
+            case 4:
+                System.out.println("Exiting...");
+                s.close();
+                return;
+            default:
+                System.out.println("Invalid choice. Please try again.");
+        }
+		}
+
+	}
+	
+	 private static void addSubject() {
+
+	        System.out.print("Enter the subject name: ");
+	        String name = s.nextLine();
+	        System.out.print("Enter the mark: ");
+	        double grade = s.nextDouble();
+	        s.nextLine(); 
+
+	        subjects[markCount] = name;
+	        grades[markCount] = grade;
+	        markCount++;
+	        System.out.println("Mark added successfully.");
+	        
+	        if (markCount >= max_marks) {
+	            System.out.println("Maximum number of marks reached.");
+	            return;
+	        }
+	    }
+	 
+	 private static void calculateAverageMark() {
+
+	        double total = 0;
+	        for (int i = 0; i < markCount; i++) {
+	            total += grades[i];
+	        }
+	        double average = total / markCount;
+	        System.out.printf("Average mark: %.2f\n", average);
+	        
+	        if (markCount == 0) {
+	            System.out.println("No marks available to calculate average.");
+	            return;
+	        }
+	    }
+	 
+	 private static void displayOverallMarks() {
+
+	        double total = 0;
+	        for (int i = 0; i < markCount; i++) {
+	            total += grades[i];
+	        }
+	        double average = total / markCount;
+	        String letterGrade = grade(average);
+
+	        System.out.printf("Overall average mark: %.2f\n", average);
+	        System.out.printf("Mark as Grade: %s\n", letterGrade);
+	        
+	        if (markCount == 0) {
+	            System.out.println("No grades available to display overall grade.");
+	            return;
+	        }
+	    }
+	 
+	 private static String grade(double average) {
+	        if (average >= 90) {
+	            return "A";
+	        } 
+	        else if (average >= 80) {
+	            return "B";
+	        } 
+	        else if (average >= 70) {
+	            return "C";
+	        } 
+	        else if (average >= 60) {
+	            return "D";
+	        } 
+	        else if(average >=50) {
+	        	return "E";
+	        }
+	        else if(average <50){
+	            return "F";
+	        }
+	        else {
+	        	return "No mark is availabe to display grade";
+	        }
+	    }
+
+}
